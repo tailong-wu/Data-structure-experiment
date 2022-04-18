@@ -19,12 +19,13 @@ typedef struct Student {
     char sex;
     char name[20];
     double score[3];
+    double sum;
     struct Student *next;
 }Student;
 
 void inputSingle(Student *s)
 {
-    scanf("%s %s %c",&s->id,&s->name,&s->sex);
+    scanf("%s %s %c",s->id,s->name,&s->sex);
     for (int j = 0 ;j<3;j++){
         scanf("%lf",&s->score[j]);
     }
@@ -33,7 +34,7 @@ void inputSingle(Student *s)
 void outputSingle(Student *s){
     printf("%s %s %c",s->id,s->name,s->sex);
     for (int j = 0 ;j<3;j++){
-        printf("%.1lf",s->score[j]);
+        printf(" %.1lf",s->score[j]);
     }
     printf("\n");
 }
@@ -52,7 +53,7 @@ void insertTail(Student *L,Student *s){
     p = L->next;
     while (p!=NULL){
         pre = p;
-        p = L->next;
+        p = p->next;
     }
     s->next = pre->next;
     pre->next= s;
