@@ -1,6 +1,6 @@
 #  README
 
-[site](./img/website.jpg)
+![site](./img/website.jpg)
 
 
 This is Course assignments for the data structure course of Wenzhou University in 2022.
