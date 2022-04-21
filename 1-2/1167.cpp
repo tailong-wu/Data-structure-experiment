@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+// this is  test about .h file 
 using namespace std;
 typedef struct Customer{
 	char guestnumber[20];
