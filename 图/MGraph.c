@@ -199,20 +199,6 @@ int connect(Graph g, VertexType v, VertexType u)
 	return g->visited[j];
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main()
 {
     return 0;
