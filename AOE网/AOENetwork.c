@@ -30,6 +30,11 @@ struct AOENetworkStruct
     VNode vexs[MAXVEX];    //点表
     int vertexNum, edgeNum; //顶点数和弧数
 };
+
+// AOE有向加权图
+// 用于估算工程完成时间
+
+
 // 创建
 AOENetwork createGraph(){
     AOENetworkStruct *g=(AOENetwork)malloc(sizeof(AOENetworkStruct));
@@ -37,6 +42,7 @@ AOENetwork createGraph(){
 	g->edgeNum =0;
 	return g;
 }
+
 
 // 查找顶点
 // 根据数据查找
@@ -69,22 +75,29 @@ void addVertex(AOENetwork g,VertexType v)
 // 查找边
 ENode *findEdge(AOENetwork g,int i,int j)
 {
+	// 给定一个ENode存储边
 	ENode *p=NULL;
+	// 遍历 从firstEdge开始，直到没有下一条边
 	for(p=g->vexs[i].firstEdge;p!=NULL;p=p->nextEdge)
+		// 如果等于j则返回
 		if(p->adjVertex==j)
 			return p;
 	return NULL;
 }
+
 // 插入边
 void addEdge(AOENetwork g, VertexType v1, VertexType v2, int w)
 {
+	// 定位两个结点 并确认两个点都存在
 	int i=locateVertex(g,v1);
 	int j=locateVertex(g,v2);
 	ENode *p;
 	if(i==-1 || j==-1)
 		return;
+	// 确认是否已经相连
 	p=findEdge(g,i,j);
 	if(p!=NULL)
+	// 如果已经相连直接赋值权重
         {
 		if(p->weight>w) 
                  {
@@ -92,6 +105,8 @@ void addEdge(AOENetwork g, VertexType v1, VertexType v2, int w)
 		}
 	}
 	else{
+		// 如果没有相连 则连接
+
 		p=(ENode*)malloc(sizeof(ENode));
 		p->adjVertex=j;
 		p->earliest=p->latest=0;
