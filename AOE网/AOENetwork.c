@@ -39,6 +39,7 @@ AOENetwork createGraph(){
 }
 
 // 查找顶点
+// 根据数据查找
 int locateVertex(AOENetwork g,VertexType v)
 {
 	int i;
@@ -48,6 +49,11 @@ int locateVertex(AOENetwork g,VertexType v)
 	return -1;
 } 
 // 插入顶点
+// AOE中的顶点多几个属性 
+// data为给定值v
+// firstEdge NULL
+// inDegree 0
+// 
 void addVertex(AOENetwork g,VertexType v)
 {
 	int k,n;
